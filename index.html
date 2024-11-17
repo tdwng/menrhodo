@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Facebook Query Search</h1>
+    <p>Nhập từ khóa và nhấn "Tìm kiếm".</p>
+    <input type="text" id="query" placeholder="Nhập từ khóa">
+    <button onclick="searchFB()">Tìm kiếm</button>
+    <ul id="results"></ul>
+
+    <script>
+        function searchFB() {
+            const query = document.getElementById("query").value;
+            if (query) {
+                const searchUrl = `https://www.facebook.com/search/top?q=${encodeURIComponent(query)}`;
+                window.open(searchUrl, '_blank'); // Mở tìm kiếm Facebook
+                document.getElementById("results").innerHTML = `
+                    <li><b>Search initiated for:</b> ${query}</li>
+                    <li>Hãy xem kết quả trên tab mới và tự phân loại.</li>
+                `;
+            } else {
+                alert("Vui lòng nhập từ khóa!");
+            }
+        }
+    </script>
+</body>
+</html>
